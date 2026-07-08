@@ -1,0 +1,32 @@
+.password-form{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+   background-color: lightgrey;
+   justify-content: center;
+     align-items: center;    
+    width:500px;
+    height:400px;
+    position: relative;
+    top:200px;
+    left:40%;
+    right:50%;
+
+    
+}
+
+.username-input form{
+    display: flex;
+    gap: 10px;
+    
+}
+.password form{
+    display: flex;
+    gap: 10px;
+
+}
+
+.submit-btn{
+    position:relative;
+    left:40px;
+}
