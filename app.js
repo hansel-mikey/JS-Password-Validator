@@ -101,27 +101,80 @@ const username=document.getElementById("username");
 const password=document.getElementById("password");
 
 const submitbtn=document.getElementById("submitButton");
-let UsernameValidator=()=>{
+// let UsernameValidator=()=>{
+//     return new Promise((resolve,reject)=>{
+//         if(username.value && password.value){
+//             resolve("Susses")
+//         }
+//         else{
+//             reject("error")
+//         }
+//     })
+// }
+// Old Code using Promise Channing =
+// submitbtn.addEventListener('click',()=>{
+//     console.log(username.value);
+//     console.log(password.value);
+//     UsernameValidator().then((res)=>{
+//     console.log(res);
+//      UsernameValidator().catch((res)=>{
+//         console.log(res);
+//      })
+// })
+// })
+
+let userDB=[{
+    name:"Hansel",
+    Password:"Hansel1"
+}]
+// Username Finder
+function userName(Data1){
     return new Promise((resolve,reject)=>{
-        if(username.value && password.value){
-            resolve("Susses")
-        }
-        else{
-            reject("error")
-        }
+        setTimeout(() => {
+            
+            if(Data1){
+                
+                if(userDB.find((u)=>u.name===Data1)){
+                    console.log("UserFound")
+                    resolve("User Matched")
+                }
+                else{
+                    reject("userNotFound")
+                }
+            }
+        },2000);
+
     })
 }
+// Password Finder
+function passWord(Data2){
+    return new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            
+            if(Data2){
+                
+                if(userDB.find((u)=>u.Password===Data2)){
+                    console.log("Password Matched user Logged in")
+                    resolve("password Matched")
+                }
+                else{
+                    console.log("Password Wrong")
+                    reject("Password Didnot Match !!")
+                }
+            }
+        },2000);
 
-submitbtn.addEventListener('click',()=>{
-    console.log(username.value);
-    console.log(password.value);
-    UsernameValidator().then((res)=>{
-    console.log(res);
-     UsernameValidator().catch((res)=>{
-        console.log(res);
-     })
+    })
+}
+submitbtn.addEventListener('click',async ()=>{
+
+    //First This will be Validated
+    await userName(username.value);
+    // Then this will be Validated
+    await passWord(password.value);
+
+    
+
+
 })
-})
-
-
 
